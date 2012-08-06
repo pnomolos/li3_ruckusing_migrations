@@ -23,7 +23,7 @@ class Migration extends \lithium\console\Command {
         $this->connection => array(
           'type'      => strtolower($connection->_config['adapter']),
           'host'      => $connection->_config['host'],
-          'port'      => 3306,
+          'port'      => isset($connection->_config['port']) ? $connection->_config['port'] : 3306,
           'database'  => $connection->_config['database'],
           'user'      => $connection->_config['login'],
           'password'  => $connection->_config['password'],
