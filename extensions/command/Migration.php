@@ -66,13 +66,13 @@ Commands:
       $this->error("Please Specify a migration description.\nThe description can either be a set of underscore_seperated_words or \"quoted words\".");
       return false;
     }
-    $argv = array('', $description, "ENV={$this->connection}");
+    $argv = array('', $description, "ENV={$this->connection}", "namespace={$this->connection}");
     $ruckusing_db_config = $this->ruckusing_db_config;
     include RUCKUSING_BASE . '/generate.php';
   }
 
   private function execute($command, $args) {
-    $argv = array_merge(array(''), array($command), $args, array("ENV={$this->connection}"));
+    $argv = array_merge(array(''), array($command), $args, array("ENV={$this->connection}", "namespace={$this->connection}"));
     $main = new \Ruckusing_FrameworkRunner($this->ruckusing_db_config, $argv);
     $main->execute();
   }
